@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-configmap-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-configmap-k8s
+  template:
+    metadata:
+      labels:
+        app: demo-configmap-k8s
+    spec:
+      containers:
+        - name: demo-configmap-k8s
+          image: demo-config-map:0.0.1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-configmap-k8s
+spec:
+  type: LoadBalancer
+  selector:
+    app: demo-configmap-k8s
+  ports:
+    - name: app
+      port: 8080
