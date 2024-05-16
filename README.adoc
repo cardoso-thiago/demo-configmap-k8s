@@ -19,8 +19,9 @@ Esse passo a passo assume que o ambiente docker, minikube e kubectl já esteja i
 ** Onde `10.109.152.2:8080` corresponde ao IP e a porta retornado no comando de lista dos serviços.
 
 Atualização em 15/05/2024 para a versão mais nova do Spring, adicionado:
-- Role e Role Binding
-- Configuração do nome do config map no bootstrap.properties
-- Adicionada a dependência `spring-cloud-starter-bootstrap` necessária para obtenção do config map e mecanismos de refresh quando a atualização for realizada
-- Subida para Java 17 e Gradle 8.7
-- Inclusão de System Out com o valor das chaves para facilitar a visualização na subida da aplicação com o minikube
+
+* Role e Role Binding
+* Configuração do nome do config map no bootstrap.properties
+* Adicionada a dependência `spring-cloud-starter-bootstrap` necessária para obtenção do config map e mecanismos de refresh quando a atualização for realizada
+* Subida para Java 17 e Gradle 8.7
+* Inclusão de System Out com o valor das chaves para facilitar a visualização na subida da aplicação com o minikube
