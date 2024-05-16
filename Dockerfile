@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:jre11u-alpine-nightly
+FROM eclipse-temurin:17.0.11_9-jdk-alpine
 COPY build/libs/*.jar /app.jar
 
 EXPOSE 8080

@@ -9,9 +9,18 @@ Esse passo a passo assume que o ambiente docker, minikube e kubectl já esteja i
 * Alterando o ambiente para o docker do minikube: `eval $(minikube docker-env)`
 * Agora, com o contexto alterado, é necessário gerar as imagens:
 ** Gerando a imagem: `docker build -t demo-config-map:0.0.1 .`
+* Criando a role para leitura de Config Map: `kubectl apply -f k8s/role.yml`
+* Criando o role binding: `kubectl apply -f k8s/rolebinding.yml`
 * Adicionando o ConfigMap: `kubectl apply -f k8s/configMap.yml`
 * Fazendo o deploy da aplicação: `kubectl apply -f k8s/appDeploy.yml`
 * Para acessar as aplicações externamente, você deve executar o comando: `minikube tunnel`
 * Em outro terminal, você pode executar o comando `kubectl get svc` para pegar o endereço externo da aplicação.
 * Para realizar o teste, basta executar um *curl* para o endereço externo, no recurso `/config/{key_from_config_map}`, por exemplo: `curl 10.109.152.2:8080/config/config.test`
 ** Onde `10.109.152.2:8080` corresponde ao IP e a porta retornado no comando de lista dos serviços.
+
+Atualização em 15/05/2024 para a versão mais nova do Spring, adicionado:
+- Role e Role Binding
+- Configuração do nome do config map no bootstrap.properties
+- Adicionada a dependência `spring-cloud-starter-bootstrap` necessária para obtenção do config map e mecanismos de refresh quando a atualização for realizada
+- Subida para Java 17 e Gradle 8.7
+- Inclusão de System Out com o valor das chaves para facilitar a visualização na subida da aplicação com o minikube
